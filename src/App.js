@@ -8,10 +8,9 @@ export default function App() {
     console.log('addItem');
   }
   return (
-    <div class="calcTable">
-      <div class="calcResult">
-        <p>{result}</p>
-      </div>
+    <div class="base">
+    <div class="calcResult">{result}</div>
+    <div class="calcTable">      
       <div class="calcRow">
         <div class="calcCell"><button onClick={addItem}>0</button></div>
         <div class="calcCell"><button onClick={addItem}>1</button></div>
@@ -36,6 +35,7 @@ export default function App() {
         <div class="calcCell"><button onClick={addItem}>=</button></div>
         <div class="calcCell"><button onClick={addItem}>c</button></div>
       </div>
+    </div>
     </div>
   );
 }
