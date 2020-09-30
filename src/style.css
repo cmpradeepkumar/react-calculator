@@ -1,0 +1,27 @@
+h1, p {
+  font-family: Lato;
+}
+
+.calcTable {
+  display: table;
+  border: 1px solid;
+}
+
+.calcResult {
+  font-family: 'Trebuchet MS';
+  font-size: large;
+  font-weight: bold;
+  text-align: right;
+}
+
+.calcRow {
+  display: table-row;
+}
+
+.calcCell {
+  display: table-cell;
+}
+
+button {
+  width: 75px;
+}
