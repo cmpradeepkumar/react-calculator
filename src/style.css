@@ -5,7 +5,6 @@ h1, p {
 .base {
   width:300px;
   margin: 50px auto;  
-  border: 1px solid;
 }
 
 .calcTable {
@@ -15,17 +14,24 @@ h1, p {
 }
 
 .calcResult {
-  font-family: 'Trebuchet MS';
-  font-size: large;
-  font-weight: bold;
+  display:block;
+  font-family: Verdana;
+  height:75px;
+  width: 300px;
+  margin: 10px auto;
   text-align: right;
-  border: solid;
-  background-color: skyblue;
-  height: 75px;
+  background-color: yellowgreen;
+  color:#fff;
+  padding-top:50px;
+  font-size:30px;
+  overflow: hidden;
+  letter-spacing: 4px;
+  position: relative;
+  top:10px;
 }
 
 .calcRow {
-  display: table-row;
+  display: block;
 }
 
 .calcCell {
@@ -35,4 +41,30 @@ h1, p {
 button {
   width: 75px;
   height: 67.5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  font-weight: bolder;
 }
+
+.buttonLarge {
+  width: 150px;
+  height: 67.5px;
+}
+
+.buttonRed{
+  background-color: red;
+  color: white;
+}
+
+.buttonOrange{
+  background-color: orange;
+  color: white;
+  font-style: italic;
+}
+
+.buttonBlue{
+  background-color: skyblue;
+  color: white;
+}
+
+
