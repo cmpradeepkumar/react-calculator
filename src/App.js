@@ -3,24 +3,26 @@ import "./style.css";
 
 export default function App() {
 const [result, setResult] = useState(0);
-const [added, setAdded] = useState(0);
-const [minused, setMinused] = useState(0);
+const [tempOne, setTempOne] = useState(0);
+const [tempTwo, setTempOne] = useState(0);
+const [tempresult, setTempresult] = useState(0);
 const [operator, setOperator] = useState('');
 function addItem(e){
-  if(result === 0)
-    setResult(e.target.value);
-  else if(added !== 0)
-    setResult(e.target.value);
-  else if(minused !== 0)
+  if(result === 0 || tempresult !== 0)
     setResult(e.target.value);
   else
     setResult(result+e.target.value);
 }
-function add(e) {
-  added = (Number(result)+Number(added));
-  setAdded(added);
-  setResult(added);
-  setOperator('+');
+function add(e) {  
+  if(operator !== '+'){   
+    setOperator('+');
+    // added = result;
+    // tempresult = result;
+    setAdded(result);
+    setTempresult(result);
+  }
+  console.log(added);
+  console.log(tempresult);
 }
 function minus(e) {
   if(minused !== 0)
