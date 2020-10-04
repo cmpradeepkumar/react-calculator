@@ -20,20 +20,19 @@ class App extends Component {
     this.setState({result: this.state.result + e.target.value});
     }
   }
-  add=()=>{
+  operation=(e)=>{
     if(this.tempResult !== 0)
       this.equals();
 
-    if(this.operator !== '+'){
-      this.operator = '+';
+    if(this.operator === ''){
+      this.operator = e.target.value;
       this.tempOne = this.state.result;
+      if(this.operator === '%')
+        this.equals();
     } else {
       this.tempTwo = this.state.result;
       this.equals();
     }
-  }
-  minus(){
-
   }
   clear=()=>{
     this.operator = '';
@@ -44,23 +43,75 @@ class App extends Component {
   }
   equals=()=>{
     if(this.operator === '+'){
-    var addition = '';
+    var added = '';
     if(this.tempResult === 0){
       if(this.tempTwo !== 0){
-      addition = (Number(this.tempOne)+Number(this.tempTwo));
-      this.setState({result: addition});    
+      added = (Number(this.tempOne)+Number(this.tempTwo));
       }
       else{ 
-      addition = (Number(this.tempOne)+Number(this.state.result));
-      this.setState({result: addition});
+      added = (Number(this.tempOne)+Number(this.state.result));      
       }
+    this.setState({result: added});
+    this.tempResult = added;
     }
-    this.tempResult = addition;
+    }
+    
+    if(this.operator === '-'){
+    var substracted = '';
+    if(this.tempResult === 0){
+      if(this.tempTwo !== 0){
+      substracted = (Number(this.tempOne)-Number(this.tempTwo));
+      }
+      else{ 
+      substracted = (Number(this.tempOne)-Number(this.state.result));
+      }
+    this.setState({result: substracted});
+    this.tempResult = substracted;
+    }
+    }
+
+    if(this.operator === '*'){
+    var multiplied = '';
+    if(this.tempResult === 0){
+      if(this.tempTwo !== 0){
+      multiplied = (Number(this.tempOne)*Number(this.tempTwo));
+      }
+      else{ 
+      multiplied = (Number(this.tempOne)*Number(this.state.result));
+      }
+    console.log('parseFloat(multiplied) :: '+multiplied);
+    this.setState({result: parseFloat(multiplied)});
+    this.tempResult = multiplied;
+    }     
+    }
+
+    if(this.operator === '/'){
+    var divided = '';
+    if(this.tempResult === 0){
+      if(this.tempTwo !== 0){
+      divided = (Number(this.tempOne)/Number(this.tempTwo));
+      }
+      else{ 
+      divided = (Number(this.tempOne)/Number(this.state.result));
+      }
+    this.setState({result: divided});
+    this.tempResult = divided;
+    }     
+    }
+
+    if(this.operator === '%'){
+    var percent = '';
+    if(this.tempResult === 0){
+      percent = (Number(this.tempOne)/100);
+    this.setState({result: percent});
+    this.tempResult = percent;
+    }     
+    }
     this.operator = '';
     this.tempOne = 0;
-    this.tempTwo = 0;  
+    this.tempTwo = 0; 
   }
-  }
+  
   render() {
     return (
     <div className="base">
@@ -70,28 +121,28 @@ class App extends Component {
         <div className="calcCell"><button onClick={this.addItem} value="7" className="buttonBlue">7</button></div>
         <div className="calcCell"><button onClick={this.addItem} value="8" className="buttonBlue">8</button></div>
         <div className="calcCell"><button onClick={this.addItem} value="9" className="buttonBlue">9</button></div>
-        <div className="calcCell"><button onClick={this.add} className="buttonOrange">+</button></div>
+        <div className="calcCell"><button onClick={this.add} className="buttonOrange" value="+">+</button></div>
       </div>
       <div className="calcRow">
         <div className="calcCell"><button onClick={this.addItem} value="4" className="buttonBlue">4</button></div>
         <div className="calcCell"><button onClick={this.addItem} value="5" className="buttonBlue">5</button></div>
         <div className="calcCell"><button onClick={this.addItem} value="6" className="buttonBlue">6</button></div>
-        <div className="calcCell"><button onClick={this.minus} className="buttonOrange">-</button></div>
+        <div className="calcCell"><button onClick={this.minus} className="buttonOrange" value="-">-</button></div>
       </div>
       <div className="calcRow">
         <div className="calcCell"><button onClick={this.addItem} value="1" className="buttonBlue">1</button></div>
         <div className="calcCell"><button onClick={this.addItem} value="2" className="buttonBlue">2</button></div>
         <div className="calcCell"><button onClick={this.addItem} value="3" className="buttonBlue">3</button></div>
-        <div className="calcCell"><button onClick={this.addItem} className="buttonOrange">*</button></div>
+        <div className="calcCell"><button onClick={this.operation} className="buttonOrange" value="*">*</button></div>
       </div>
       <div className="calcRow">
-        <div className="calcCell"><button onClick={this.addItem} value="0" className="buttonLarge buttonRed">0</button></div>
-        <div className="calcCell"><button onClick={this.addItem} className="buttonBlue">.</button></div>        
-        <div className="calcCell"><button onClick={this.addItem} className="buttonOrange">/</button></div>
+        <div className="calcCell"><button onClick={this.addItem} className="buttonLarge buttonRed" value="0">0</button></div>
+        <div className="calcCell"><button onClick={this.addItem} className="buttonBlue" value=".">.</button></div>        
+        <div className="calcCell"><button onClick={this.operation} className="buttonOrange" value="/">/</button></div>
       </div>
       <div className="calcRow">        
         <div className="calcCell"><button onClick={this.clear} className="buttonLarge buttonRed">Del</button></div>
-        <div className="calcCell"><button onClick={this.addItem} className="buttonOrange">%</button></div>
+        <div className="calcCell"><button onClick={this.operation} className="buttonOrange" value="%">%</button></div>
         <div className="calcCell"><button onClick={this.equals} className="buttonRed">=</button></div>
       </div>
     </div>
