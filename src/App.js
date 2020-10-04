@@ -22,7 +22,7 @@ class App extends Component {
   }
   add=()=>{
     if(this.tempResult !== 0)
-    this.equals();
+      this.equals();
 
     if(this.operator !== '+'){
       this.operator = '+';
@@ -35,8 +35,12 @@ class App extends Component {
   minus(){
 
   }
-  clear(){
-
+  clear=()=>{
+    this.operator = '';
+    this.tempOne = 0;
+    this.tempTwo = 0;
+    this.tempResult = 0;
+    this.setState({result: 0});
   }
   equals=()=>{
     if(this.operator === '+'){
