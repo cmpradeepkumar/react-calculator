@@ -25,6 +25,7 @@ class App extends Component {
     if (this.tempResult !== 0) this.equals();
 
     if (this.operator === "") {
+      console.log(this.operator);
       this.operator = e.target.value;
       this.tempOne = this.state.result;
       if (this.operator === "%") this.equals();
@@ -132,7 +133,7 @@ class App extends Component {
               </button>
             </div>
             <div className="calcCell">
-              <button onClick={this.add} className="buttonOrange" value="+">
+              <button onClick={this.operation} className="buttonOrange" value="+">
                 +
               </button>
             </div>
@@ -154,7 +155,7 @@ class App extends Component {
               </button>
             </div>
             <div className="calcCell">
-              <button onClick={this.minus} className="buttonOrange" value="-">
+              <button onClick={this.operation} className="buttonOrange" value="-">
                 -
               </button>
             </div>
