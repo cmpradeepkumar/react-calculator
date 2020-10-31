@@ -3,6 +3,7 @@ import "./style.css";
 
 class App extends Component {
   constructor() {
+    super();
     this.state = { result: 0 };
     this.operator = "";
     this.tempOne = 0;
